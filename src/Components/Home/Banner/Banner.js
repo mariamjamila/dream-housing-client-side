@@ -1,9 +1,9 @@
 import React from 'react';
-
+import pic from "../../../Images/banner.jpg"
 const Banner = () => {
     return (
         <div>
-          <h2>This is Banner</h2>  
+         <img className="w-100 h-20 p-3" src={pic} alt="" /> 
         </div>
     );
 };
