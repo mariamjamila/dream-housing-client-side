@@ -26,7 +26,7 @@ const Navigation = () => {
             Register
           </Nav.Link>
           
-         { user.email?
+         { user?.email?
          <button className="btn btn-primary" onClick={logOut}> LogOut</button>
            
           
