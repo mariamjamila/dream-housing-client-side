@@ -30,6 +30,7 @@ import AddProduct from "../../Admin/AddProduct/AddProduct";
 import Review from "./Review/Review";
 import ManageOrders from "../../Admin/ManageOrders/ManageOrders";
 import MyOrders from "../MyOrders/MyOrders";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 
 const drawerWidth = 250;
 
@@ -211,15 +212,15 @@ const DashBoard = (props) => {
         <Toolbar />
         <Switch>
           <Route exact path={path}></Route>
-          <Route path={`${path}/manageProducts`}>
+          <AdminRoute path={`${path}/manageProducts`}>
             <MakeAdmin></MakeAdmin>
-          </Route>
-          <Route path={`${path}/addProduct`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
-          </Route>
-          <Route path={`${path}/manageOrders`}>
+          </AdminRoute>
+          <AdminRoute path={`${path}/manageOrders`}>
             <ManageOrders></ManageOrders>
-          </Route>
+          </AdminRoute>
           <Route path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
           </Route>

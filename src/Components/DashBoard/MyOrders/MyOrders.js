@@ -42,7 +42,7 @@ const MyOrders = () => {
       {houses.map((house) => (
         <div key={house._id}>
           <img src={`${house?.image}`}></img>
-          <h6>Name:{house.name}</h6>
+          <h6>Name:{house?.name}</h6>
           <h4>
             Cost:<small>{house?.price}</small>
           </h4>

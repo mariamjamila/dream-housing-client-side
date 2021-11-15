@@ -1,21 +1,21 @@
 import { CircularProgress } from '@mui/material';
 import React from 'react';
 import { Redirect, Route } from 'react-router';
-import useAuth from '../../../Firebase/Hooks/useAuth';
+import useAuth from '../../Firebase/Hooks/useAuth';
 
-const PrivateRoute = ({children, ...rest}) => {
-    const{user, isLoading} = useAuth();
+const AdminRoute = ({children, ...rest}) => {
+    const{user,admin, isLoading} = useAuth();
     if(isLoading){return<CircularProgress/>}
     return (
         <Route
           {...rest}
           render={({ location }) =>
-            user.email ? (
+            user.email && admin ? (
               children
             ) : (
               <Redirect
                 to={{
-                  pathname: "/login",
+                  pathname: "/",
                   state: { from: location }
                 }}
               />
@@ -26,4 +26,4 @@ const PrivateRoute = ({children, ...rest}) => {
     
 };
 
-export default PrivateRoute;
+export default AdminRoute;
