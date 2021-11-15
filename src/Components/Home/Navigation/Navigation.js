@@ -1,6 +1,7 @@
+import { Box, margin } from "@mui/system";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import useAuth from "../../Firebase/Hooks/useAuth";
 
@@ -27,13 +28,17 @@ const Navigation = () => {
           </Nav.Link>
           
          { user?.email?
+         <Box>
+         <NavLink style={{ textDecoration: "none", color:'blue'}} to="/dashboard">Dash Board</NavLink>
+         
          <button className="btn btn-primary" onClick={logOut}> LogOut</button>
-           
+         </Box>
           
         :
           <Nav.Link as={Link} to="/login">
             Login
           </Nav.Link>}
+         
         </Nav>
       </Container>
     </Navbar>
