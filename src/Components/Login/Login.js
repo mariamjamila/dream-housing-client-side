@@ -26,7 +26,7 @@ const Login = () => {
   return (
     <div>
       <div>
-        <h2 className="text-center">This is Login</h2>
+        <h2 className="text-center">Login</h2>
       </div>
 
       <div className="login-box w-25 m-auto" style={{ height: "100%" }}>
