@@ -47,7 +47,7 @@ const AddProduct = () => {
     
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input type="submit" />
+      <input className="btn btn-danger p-2 m-2" type="submit" />
     </form>
         </div>
     );
