@@ -1,8 +1,19 @@
+import { Delete, DeleteOutline } from "@mui/icons-material";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  CardMedia,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { pink } from "@mui/material/colors";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../Firebase/Hooks/useAuth";
 
 const MyOrders = () => {
-  const [houses, setHouses] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const { user } = useAuth();
   useEffect(() => {
@@ -14,21 +25,25 @@ const MyOrders = () => {
       body: JSON.stringify({ user: user.email }),
     })
       .then((res) => res.json())
-      .then((data) => setHouses(data));
+      .then((data) => {
+        console.log(data);
+        setOrders(data);
+      });
   }, []);
   const handleDelete = (id) => {
     const deleteCertain = window.confirm("Do you want to delete?");
 
     if (deleteCertain) {
+      const remaining = orders?.filter((order) => order._id !== id);
+      setOrders(remaining);
       fetch(`http://localhost:5000/myOrder/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
+            
           }
-          const remaining = houses?.filter((house) => house._id !== id);
-          setHouses(remaining);
         });
     } else {
       console.log("User cancelled delete");
@@ -37,23 +52,30 @@ const MyOrders = () => {
 
   return (
     <div>
-      <h2> My Orders:{houses.length}</h2>
-      {console.log(houses)}
-      {houses.map((house) => (
-        <div key={house._id}>
-          <img src={`${house?.image}`}></img>
-          <h6>Name:{house?.name}</h6>
-          <h4>
-            Cost:<small>{house?.price}</small>
-          </h4>
-          <small>Email:{user.email}</small>
-          <button
-            onClick={() => handleDelete(house._id)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
-        </div>
+      <h2> My Orders:{orders.length}</h2>
+      {orders.map((order) => (
+        <Card sx={{ maxWidth: 345, margin: 2 }} key={order._id}>
+          <CardHeader
+            title={order.house.name}
+            subheader={order.email}
+            action={
+              <IconButton onClick = {() => {handleDelete(order._id)}} sx={{color: pink[300]}}>
+                <DeleteOutline></DeleteOutline>
+              </IconButton>
+            }
+          />
+          <CardMedia
+            component="img"
+            height="194"
+            image={order.house.image}
+            alt="Paella dish"
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {order.house.description}
+            </Typography>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );

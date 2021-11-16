@@ -24,6 +24,7 @@ import {
   Route,
   useRouteMatch,
 } from "react-router-dom";
+import { useHistory } from "react-router";
 import Pay from "./Pay/Pay";
 import MakeAdmin from "../../Admin/MakeAdmin/MakeAdmin";
 import AddProduct from "../../Admin/AddProduct/AddProduct";
@@ -39,9 +40,15 @@ const DashBoard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
+  const history = useHistory();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const handleLogout = () => {
+    logOut();
+    history.push('/');
+  }
 
   const drawer = (
     <div>
@@ -154,8 +161,8 @@ const DashBoard = (props) => {
             <MenuIcon />
           </IconButton>
 
-          <Button variant="contained" onClick={logOut}>
-            {" "}
+          <Button variant="contained" onClick={handleLogout}>
+          
             LogOut
           </Button>
 
@@ -213,7 +220,8 @@ const DashBoard = (props) => {
         <Switch>
           <Route exact path={path}></Route>
           <AdminRoute path={`${path}/manageProducts`}>
-            <MakeAdmin></MakeAdmin>
+            Manage products...
+            {/* <ManageProducts></ManageProducts> */}
           </AdminRoute>
           <AdminRoute path={`${path}/addProduct`}>
             <AddProduct></AddProduct>
