@@ -32,6 +32,7 @@ import Review from "./Review/Review";
 import ManageOrders from "../../Admin/ManageOrders/ManageOrders";
 import MyOrders from "../MyOrders/MyOrders";
 import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import ManageProducts from "../ManageProducts/ManageProducts";
 
 const drawerWidth = 250;
 
@@ -220,8 +221,8 @@ const DashBoard = (props) => {
         <Switch>
           <Route exact path={path}></Route>
           <AdminRoute path={`${path}/manageProducts`}>
-            Manage products...
-            {/* <ManageProducts></ManageProducts> */}
+
+            <ManageProducts></ManageProducts>
           </AdminRoute>
           <AdminRoute path={`${path}/addProduct`}>
             <AddProduct></AddProduct>

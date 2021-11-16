@@ -6,14 +6,18 @@ import Banner from './Banner/Banner';
 import AllHouses from './AllHouses/AllHouses';
 import BestHouses from './BestHouses/BestHouses';
 import ReviewsList from './Review/ReviewsList';
+import { Container, Divider } from '@mui/material';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <h2>This is home</h2>
-            <BestHouses></BestHouses>
-            <ReviewsList></ReviewsList>
+            <Container>
+                <BestHouses></BestHouses>
+                <Divider></Divider>
+                <ReviewsList></ReviewsList>
+            </Container>
+           
            
            
         </div>

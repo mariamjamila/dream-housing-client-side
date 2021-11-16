@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { React, useState, useEffect } from "react";
+import { Rating, Stack } from '@mui/material';
 
 const ReviewsList = () => {
   const [reviews, setReviews] = useState([]);
@@ -20,13 +21,15 @@ const ReviewsList = () => {
         <Typography variant="h4">
             Reviews
         </Typography>
-      {reviews.map((review) => (
+        <Stack spacing={2}>
+        {reviews.map((review) => (
         <Box>
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ minWidth: 275 }} variant="outlined">
             <CardContent>
               <Typography variant="h5" component="div">
                 {review.name}
               </Typography>
+              <Rating readOnly value={review.rating}></Rating>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 {review.email}
               </Typography>
@@ -35,6 +38,8 @@ const ReviewsList = () => {
           </Card>
         </Box>
       ))}
+        </Stack>
+     
     </div>
   );
 };

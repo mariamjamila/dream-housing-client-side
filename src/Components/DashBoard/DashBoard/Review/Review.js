@@ -1,6 +1,6 @@
-import { TextField } from "@mui/material";
+import { Rating, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import {Button } from '@mui/material';
+import {Button,Stack } from '@mui/material';
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Firebase/Hooks/useAuth";
 
@@ -36,19 +36,20 @@ const Review = () => {
 
   return (
     <div>
+      <h2>Leave a Review!</h2>
       <form onSubmit={handleSubmit}>
-
-        <TextField
-          id="standard-multiline-static"
-          label="Write your review"
-          multiline
-          rows={4}
-          defaultValue="Default Value"
-          variant="standard"
-          onBlur={handleBlur}
-        />
-
-        <Button sx={{ width: "75%", m: 1 }} type="submit" variant="contained" color="primary">Submit</Button>
+        <Stack spacing={2}>
+          <TextField
+            name="comment"
+            label="Write your review"
+            rows={2}
+            multiline
+            onBlur={handleBlur}
+          />
+          <Rating name="rating" onBlur={handleBlur}></Rating>
+          <Button type="submit" variant="contained" color="primary">Submit</Button>
+        </Stack>
+       
       </form>
     </div>
   );
