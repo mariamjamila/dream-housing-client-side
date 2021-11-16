@@ -1,3 +1,4 @@
+import { Alert, CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
@@ -5,7 +6,7 @@ import useAuth from "../Firebase/Hooks/useAuth";
 import useFirebase from "../Firebase/Hooks/useFirebase";
 
 const Register = () => {
-	const { registerUser, user, authError} = useAuth();
+	const { registerUser, user, authError, isLoading} = useAuth();
 	const [loginData, setLoginData] = useState({});
 	const history = useHistory();
 
@@ -80,11 +81,13 @@ const Register = () => {
 				</button>
 				<Link  style= {{textDecoration:"none"}} to="/login">Registered?Please Login</Link>
 			</form>
-			{
+			
 				
+				{authError &&<Alert severity="error">{authError} </Alert>}
+				{isLoading && <CircularProgress />}
+				{user?.email && <Alert severity="success">user created successfully!</Alert>}
 				
-				
-			}
+			
 		</div>
 	);
 };
