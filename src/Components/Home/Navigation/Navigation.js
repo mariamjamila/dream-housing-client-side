@@ -10,7 +10,7 @@ const Navigation = () => {
   return (
     <Navbar bg="light" text="primary"> 
       <Container>
-        <Navbar.Brand href="#home">Dream Housing</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/home">Dream Housing</Navbar.Brand>
         <Nav >
         
           <Nav.Link as={Link} to="/about">
@@ -26,13 +26,17 @@ const Navigation = () => {
           <Nav.Link as={Link} to="/register">
             Register
           </Nav.Link>
+
+          <Nav.Link as={Link} to="/allhouses">
+            All Houses
+          </Nav.Link>
           
          { user?.email?
-         <Box>
-         <NavLink style={{ textDecoration: "none", color:'blue'}} to="/dashboard">Dash Board</NavLink>
+         <>
+         <Nav.Link as={Link} style={{ textDecoration: "none", color:'blue'}} to="/dashboard">Dashboard</Nav.Link>
          
          <button className="btn btn-primary" onClick={logOut}> LogOut</button>
-         </Box>
+         </>
           
         :
           <Nav.Link as={Link} to="/login">

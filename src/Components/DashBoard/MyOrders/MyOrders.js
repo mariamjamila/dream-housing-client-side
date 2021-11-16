@@ -17,7 +17,7 @@ const MyOrders = () => {
 
   const { user } = useAuth();
   useEffect(() => {
-    fetch("http://localhost:5000/myOrder", {
+    fetch("https://morning-shore-44498.herokuapp.com/myOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,13 +36,12 @@ const MyOrders = () => {
     if (deleteCertain) {
       const remaining = orders?.filter((order) => order._id !== id);
       setOrders(remaining);
-      fetch(`http://localhost:5000/myOrder/${id}`, {
+      fetch(`https://morning-shore-44498.herokuapp.com/myOrder/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            
           }
         });
     } else {
@@ -59,7 +58,12 @@ const MyOrders = () => {
             title={order.house.name}
             subheader={order.email}
             action={
-              <IconButton onClick = {() => {handleDelete(order._id)}} sx={{color: pink[300]}}>
+              <IconButton
+                onClick={() => {
+                  handleDelete(order._id);
+                }}
+                sx={{ color: pink[300] }}
+              >
                 <DeleteOutline></DeleteOutline>
               </IconButton>
             }

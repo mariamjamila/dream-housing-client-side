@@ -18,7 +18,7 @@ const AllHouses = () => {
   const history = useHistory();
   const [houses, setHouses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/houses")
+    fetch("https://morning-shore-44498.herokuapp.com/houses")
       .then((res) => res.json())
       .then((data) => setHouses(data));
   }, []);
@@ -40,7 +40,11 @@ const AllHouses = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button onClick={() => {handleBuyNow(house._id);}}>
+              <Button
+                onClick={() => {
+                  handleBuyNow(house._id);
+                }}
+              >
                 Buy Now
               </Button>
             </CardActions>

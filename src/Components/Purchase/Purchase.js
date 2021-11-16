@@ -15,22 +15,20 @@ const Purchase = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (formData) => {
-
-    const postData = {...formData, name:user.displayName, email: user.email};
-    fetch(`http://localhost:5000/purchase/${id}`, {
-      method:'POST',
-      headers:{
-        'Content-Type':"application/json"
+    const postData = { ...formData, name: user.displayName, email: user.email };
+    fetch(`https://morning-shore-44498.herokuapp.com/purchase/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(postData)
+      body: JSON.stringify(postData),
     })
-    .then(res=>res.json())
-    .then(data => console.log(data))
-   
-  }
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/purchase/${id}`)
+    fetch(`https://morning-shore-44498.herokuapp.com/purchase/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -55,12 +53,11 @@ const Purchase = () => {
           className="w-50 d-flex flex-column gap-3"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <input 
+          <input
             className="form-control"
             defaultValue={user.displayName}
             {...register("name")}
             disabled
-
           />
           <input
             className="form-control"

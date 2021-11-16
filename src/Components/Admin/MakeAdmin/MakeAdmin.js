@@ -4,14 +4,14 @@ import { Button } from "react-bootstrap";
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
-  const[success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState(false);
   const handleOnBlur = (e) => {
     setEmail(e.target.value);
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
     e.preventDefault();
-    fetch("http://localhost:5000/users/admin", {
+    fetch("https://morning-shore-44498.herokuapp.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -20,10 +20,10 @@ const MakeAdmin = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.modifiedCount){
+        if (data.modifiedCount) {
           console.log(data);
- 
-          setSuccess(true)
+
+          setSuccess(true);
         }
       });
   };
@@ -41,7 +41,7 @@ const MakeAdmin = () => {
           Make Admin
         </Button>
       </form>
-      {success&&<Alert severity="success">Made admin successfully</Alert>}
+      {success && <Alert severity="success">Made admin successfully</Alert>}
     </div>
   );
 };

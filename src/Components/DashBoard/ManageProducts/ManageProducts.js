@@ -17,7 +17,7 @@ const ManageProducts = () => {
   const history = useHistory();
   const [houses, setHouses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/houses")
+    fetch("https://morning-shore-44498.herokuapp.com/houses")
       .then((res) => res.json())
       .then((data) => setHouses(data));
   }, []);
@@ -27,13 +27,12 @@ const ManageProducts = () => {
     if (deleteCertain) {
       const remaining = houses?.filter((order) => order._id !== id);
       setHouses(remaining);
-      fetch(`http://localhost:5000/manageProducts/${id}`, {
+      fetch(`https://morning-shore-44498.herokuapp.com/manageProducts/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            
           }
         });
     } else {

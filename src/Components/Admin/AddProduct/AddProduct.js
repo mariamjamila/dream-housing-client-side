@@ -14,7 +14,7 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://morning-shore-44498.herokuapp.com/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,33 +30,35 @@ const AddProduct = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
-        <TextField
+          <TextField
             label="Image URL"
-          placeholder="Image URL"
-          {...register("image")}
-        />
-        <TextField
+            placeholder="Image URL"
+            {...register("image")}
+          />
+          <TextField
             label="Product Name"
-          placeholder="Product name"
-          {...register("name")}
-        />
+            placeholder="Product name"
+            {...register("name")}
+          />
 
-        <TextField
+          <TextField
             label="Product Price"
-          placeholder="product price"
-          {...register("price")}
-        />
+            placeholder="product price"
+            {...register("price")}
+          />
 
-        <TextField
+          <TextField
             label="Description"
-          placeholder="Add a description..."
-          cols="30"
-          {...register("description")}
-        />
+            placeholder="Add a description..."
+            cols="30"
+            {...register("description")}
+          />
 
-        {errors.exampleRequired && <span>This field is required</span>}
+          {errors.exampleRequired && <span>This field is required</span>}
 
-        <Button variant="contained" type="submit" >Submit</Button>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
         </Stack>
       </form>
     </div>

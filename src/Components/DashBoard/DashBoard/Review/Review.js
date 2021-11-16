@@ -1,38 +1,39 @@
 import { Rating, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import {Button,Stack } from '@mui/material';
+import { Button, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Firebase/Hooks/useAuth";
 
 const Review = () => {
-    const [review, setReview] = useState({});
-    const {user} = useAuth();
-    const handleBlur=e=>{
-        const field =e.target.name;
-        const value= e.target.value;
-        const newReview ={...review}
+  const [review, setReview] = useState({});
+  const { user } = useAuth();
+  const handleBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newReview = { ...review };
 
-        const username = user.displayName;
-        const useremail = user.email;
-        
-        newReview.name = username;
-        newReview.email = useremail;
+    const username = user.displayName;
+    const useremail = user.email;
 
-       newReview[field] =value;
-       setReview(newReview)
-    }
+    newReview.name = username;
+    newReview.email = useremail;
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        fetch('http://localhost:5000/addReview',{
-            method:"POST",
-            headers:{
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(review)
-        }).then(res => res.json)
-        .then(data => console.log(data))
-    }
+    newReview[field] = value;
+    setReview(newReview);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("https://morning-shore-44498.herokuapp.com/addReview", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json)
+      .then((data) => console.log(data));
+  };
 
   return (
     <div>
@@ -47,9 +48,10 @@ const Review = () => {
             onBlur={handleBlur}
           />
           <Rating name="rating" onBlur={handleBlur}></Rating>
-          <Button type="submit" variant="contained" color="primary">Submit</Button>
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
         </Stack>
-       
       </form>
     </div>
   );
