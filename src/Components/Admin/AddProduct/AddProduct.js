@@ -30,9 +30,20 @@ const AddProduct = () => {
       <input
        className="p-2, m-2"
       placeholder="product name"
-      {...register("image")} />
+      {...register("name")} />
      
-      <input {...register("exampleRequired", { required: true })} />
+      <input
+       className="p-2, m-2"
+      placeholder="product price"
+      {...register("price")} />
+     
+      <input
+       className="p-2, m-2"
+      placeholder="Add a description..."
+      cols="30"
+      {...register("price")} />
+     
+      <input {...register("description", { required: true })} />
     
       {errors.exampleRequired && <span>This field is required</span>}
       
