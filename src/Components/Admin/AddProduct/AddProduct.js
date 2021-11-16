@@ -1,5 +1,4 @@
 import { Button, TextField } from "@mui/material";
-import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import { useForm } from "react-hook-form";
 
@@ -7,10 +6,8 @@ const AddProduct = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
-  const [addProduct, setAddProduct] = useState({});
 
   const onSubmit = (data) => {
     console.log(data);
