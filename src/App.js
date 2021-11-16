@@ -13,41 +13,47 @@ import Footer from "./Components/Home/Footer/Footer";
 import AllHouses from "./Components/Home/AllHouses/AllHouses";
 import Purchase from "./Components/Purchase/Purchase";
 import DashBoard from "./Components/DashBoard/DashBoard/DashBoard";
+import { Toolbar } from "@mui/material";
+import { Box } from "@mui/system";
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <Router>
           <Navigation />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route exact path="/users">
-              <Users />
-            </Route>
-            <Route path="/dashboard">
-              <DashBoard />
-            </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/allhouses">
-              <AllHouses></AllHouses>
-            </Route>
-            <Route exact path="/purchase/:id">
-              <Purchase></Purchase>
-            </Route>
-          </Switch>
+          <Toolbar />
+          <Box sx={{flex:1}}>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/about">
+                <About />
+              </Route>
+              <Route exact path="/users">
+                <Users />
+              </Route>
+              <Route path="/dashboard">
+                <DashBoard />
+              </Route>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/allhouses">
+                <AllHouses></AllHouses>
+              </Route>
+              <Route exact path="/purchase/:id">
+                <Purchase></Purchase>
+              </Route>
+            </Switch>
+          </Box>
+          
           <Footer></Footer>
         </Router>
 

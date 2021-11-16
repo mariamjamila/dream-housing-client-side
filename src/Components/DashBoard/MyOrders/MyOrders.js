@@ -35,14 +35,15 @@ const MyOrders = () => {
     const deleteCertain = window.confirm("Do you want to delete?");
 
     if (deleteCertain) {
-      const remaining = orders?.filter((order) => order._id !== id);
-      setOrders(remaining);
+      
       fetch(`https://morning-shore-44498.herokuapp.com/myOrder/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
+            const remaining = orders?.filter((order) => order._id !== id);
+            setOrders(remaining);
           }
         });
     } else {

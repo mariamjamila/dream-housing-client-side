@@ -1,44 +1,41 @@
+import { AppBar, Toolbar, Typography, Button} from "@mui/material";
 import { Box, margin } from "@mui/system";
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import useAuth from "../../Firebase/Hooks/useAuth";
 
 const Navigation = () => {
   const{user, logOut} = useAuth()
   return (
-    <Navbar bg="light" text="primary"> 
-      <Container>
-        <Navbar.Brand as={Link} to="/home">Dream Housing</Navbar.Brand>
-        <Nav>
-      
-          <Nav.Link as={Link} to="/home">
-            Home
-          </Nav.Link>
-          <Nav.Link as={Link} to="/register">
-            Register
-          </Nav.Link>
 
-          <Nav.Link as={Link} to="/allhouses">
-            All Houses
-          </Nav.Link>
+    <AppBar color="inherit" position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <Toolbar>
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" sx={{textDecoration:'none'}} component={Link} to="/home" >
+              Dream Housing
+            </Typography>
+          </Box>
+        
+            <Button component={Link} to="/allhouses" >All Houses</Button>
+
+            { user?.email?
+          <>
+            <Button component={Link} to="/dashboard">Dashboard</Button>
+            
+            <Button onClick={logOut}> Log Out</Button>
+          </>
+            
+          :
+          <>
+          <Button component={Link} to="/login">Login</Button>
+          <Button component={Link}  to="/register">Register</Button>
+          </>
+          }
           
-         { user?.email?
-         <>
-         <Nav.Link as={Link} style={{ textDecoration: "none", color:'blue'}} to="/dashboard">Dashboard</Nav.Link>
-         
-         <button className="btn btn-primary" onClick={logOut}> LogOut</button>
-         </>
-          
-        :
-          <Nav.Link as={Link} to="/login">
-            Login
-          </Nav.Link>}
-         
-        </Nav>
-      </Container>
-    </Navbar>
+        </Toolbar>
+    </AppBar>
+    
   );
 };
 

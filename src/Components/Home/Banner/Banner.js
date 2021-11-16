@@ -2,8 +2,8 @@ import React from 'react';
 import pic from "../../../Images/banner.jpg"
 const Banner = () => {
     return (
-        <div>
-         <img className="w-100 h-20 p-3" src={pic} alt="" /> 
+        <div style={{maxHeight:'600px', overflow:'hidden'}}>
+         <img className="w-100 p-3" src={pic} alt="" /> 
         </div>
     );
 };

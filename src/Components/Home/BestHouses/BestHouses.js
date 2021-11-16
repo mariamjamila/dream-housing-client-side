@@ -25,7 +25,7 @@ const BestHouses = () => {
   };
   return (
     <Box>
-      <Grid container>
+      <Grid container sx={{justifyContent:"center"}}>
         {houses.map((house) => (
           <Card sx={{ width: 345, margin: 2 }} key={house._id}>
             <CardHeader title={house.name} subheader={house.price} />

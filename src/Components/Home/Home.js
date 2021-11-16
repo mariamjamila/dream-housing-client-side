@@ -17,6 +17,7 @@ const Home = () => {
                 <BestHouses></BestHouses>
                 <Divider sx={{marginTop: 4, marginBottom: 4}} textAlign="center"><Chip label="Reviews" /></Divider>
                 <ReviewsList></ReviewsList>
+                <Divider sx={{marginTop: 4, marginBottom: 4}} ></Divider>
             </Container>
            
            

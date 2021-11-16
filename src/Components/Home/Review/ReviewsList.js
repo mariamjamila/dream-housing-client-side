@@ -25,10 +25,10 @@ const ReviewsList = () => {
                 <Typography variant="h5" component="div">
                   {review.name}
                 </Typography>
-                <Rating readOnly value={review.rating}></Rating>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {review.email}
                 </Typography>
+                <Rating readOnly value={review.rating}></Rating>
                 <Typography variant="body2">{review.comment}</Typography>
               </CardContent>
             </Card>
