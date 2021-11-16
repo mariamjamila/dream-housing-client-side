@@ -25,11 +25,11 @@ const Login = () => {
   };
   return (
     <div>
-      <div>
-        <h2 className="text-center">Login</h2>
-      </div>
+      
 
-      <div className="login-box w-25 m-auto" style={{ height: "100%" }}>
+      <div className="login-box w-25 m-auto">
+    
+        <h2>Login</h2>
         <form className="d-flex flex-column" onSubmit={handleOnSubmit}>
           <div className="mb-3 ">
             <input
