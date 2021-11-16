@@ -5,6 +5,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   IconButton,
   Typography,
 } from "@mui/material";
@@ -74,6 +75,10 @@ const MyOrders = () => {
             image={order.house.image}
             alt="Paella dish"
           />
+          <CardContent>
+            {order.approved ? <Chip label="Approved" color="success" variant="outlined"></Chip> : <Chip label="Pending" color="warning" variant="outlined"></Chip>}
+          </CardContent>
+      
           <CardContent>
             <Typography variant="body2" color="text.secondary">
               {order.house.description}

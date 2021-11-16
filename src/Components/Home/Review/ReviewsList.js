@@ -17,7 +17,6 @@ const ReviewsList = () => {
 
   return (
     <div>
-      <Typography variant="h4">Reviews</Typography>
       <Stack spacing={2}>
         {reviews.map((review) => (
           <Box>

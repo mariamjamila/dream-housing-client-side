@@ -11,15 +11,8 @@ const Navigation = () => {
     <Navbar bg="light" text="primary"> 
       <Container>
         <Navbar.Brand as={Link} to="/home">Dream Housing</Navbar.Brand>
-        <Nav >
-        
-          <Nav.Link as={Link} to="/about">
-            About
-          </Nav.Link>
-
-          <Nav.Link as={Link} to="/users">
-            Users
-          </Nav.Link>
+        <Nav>
+      
           <Nav.Link as={Link} to="/home">
             Home
           </Nav.Link>

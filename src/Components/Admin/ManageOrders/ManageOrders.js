@@ -1,11 +1,14 @@
 import { DeleteOutline } from "@mui/icons-material";
 import {
   Card,
+  CardActions,
   CardContent,
   CardHeader,
   CardMedia,
+  Chip,
   IconButton,
   Typography,
+  Button
 } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import React, { useEffect, useState } from "react";
@@ -42,6 +45,26 @@ const ManageOrders = () => {
     }
   };
 
+  const handleApproval = (id) => {
+    fetch(`https://morning-shore-44498.herokuapp.com/purchase/${id}`, {
+        method: "PUT",
+      })
+    .then((res) => res.json())
+    .then((data) => {
+        if(data.modifiedCount){
+            const approved = orders.map(order => {
+                if(order._id === id){
+                    order.approved = true;
+                }
+                return order;
+            });
+            setOrders(approved);
+        }
+        console.log(data);
+    });
+
+  }
+
   return (
     <div>
       <h2> All Orders:{orders.length}</h2>
@@ -65,13 +88,19 @@ const ManageOrders = () => {
             component="img"
             height="194"
             image={order.house.image}
-            alt="Paella dish"
           />
+          <CardContent>
+            {order.approved ? <Chip label="Approved" color="success" variant="outlined"></Chip> : <Chip label="Pending" color="warning" variant="outlined"></Chip>}
+          </CardContent>
+            
           <CardContent>
             <Typography variant="body2" color="text.secondary">
               {order.house.description}
             </Typography>
           </CardContent>
+          <CardActions>
+              {!order.approved && <Button onClick={ ()=> handleApproval(order._id)} color="success">Approve</Button>}
+          </CardActions>
         </Card>
       ))}
     </div>
