@@ -13,6 +13,7 @@ import Footer from "./Components/Home/Footer/Footer";
 import AllHouses from "./Components/Home/AllHouses/AllHouses";
 import Purchase from "./Components/Purchase/Purchase";
 import DashBoard from "./Components/DashBoard/DashBoard/DashBoard";
+import PrivateRoute from "./Components/Contexts/AuthProvider/PrivateRoute/PrivateRoute";
 import { Toolbar } from "@mui/material";
 import { Box } from "@mui/system";
 function App() {
@@ -33,9 +34,9 @@ function App() {
               <Route exact path="/users">
                 <Users />
               </Route>
-              <Route path="/dashboard">
+              <PrivateRoute path="/dashboard">
                 <DashBoard />
-              </Route>
+              </PrivateRoute>
               <Route exact path="/home">
                 <Home />
               </Route>
@@ -48,9 +49,9 @@ function App() {
               <Route exact path="/allhouses">
                 <AllHouses></AllHouses>
               </Route>
-              <Route exact path="/purchase/:id">
+              <PrivateRoute exact path="/purchase/:id">
                 <Purchase></Purchase>
-              </Route>
+              </PrivateRoute>
             </Switch>
           </Box>
           
