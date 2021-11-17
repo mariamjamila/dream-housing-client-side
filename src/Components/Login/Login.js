@@ -1,10 +1,10 @@
 import { Alert, CircularProgress } from "@mui/material";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-
+import { Link, useHistory, useLocation } from "react-router-dom";
 import useAuth from "../Firebase/Hooks/useAuth";
 
 const Login = () => {
+  const location = useLocation();
   const history = useHistory();
   const { logInUser, user, authError, isLoading } = useAuth();
   const [loginData, setLoginData] = useState({});
@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    logInUser(loginData.email, loginData.password, history);
+    logInUser(loginData.email, loginData.password,location, history);
     console.log(authError);
     e.target.reset();
   };
