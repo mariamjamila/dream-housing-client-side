@@ -10,6 +10,7 @@ import {
   Grid,
   Box,
   CardActions,
+  Container
 } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import { DeleteOutline } from "@mui/icons-material";
@@ -27,9 +28,9 @@ const AllHouses = () => {
   };
   return (
     <Box>
+      <Container>
       <h2>Explore All Houses {houses.length}</h2>
-
-      <Grid container>
+      <Grid container sx={{justifyContent:'center'}}>
         {houses.map((house) => (
           <Card sx={{ width: 345, margin: 2 }} key={house._id}>
             <CardHeader title={house.name} subheader={house.price} />
@@ -51,7 +52,9 @@ const AllHouses = () => {
           </Card>
         ))}
       </Grid>
+      </Container>
     </Box>
+
   );
 };
 

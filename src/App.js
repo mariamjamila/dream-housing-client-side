@@ -14,7 +14,7 @@ import AllHouses from "./Components/Home/AllHouses/AllHouses";
 import Purchase from "./Components/Purchase/Purchase";
 import DashBoard from "./Components/DashBoard/DashBoard/DashBoard";
 import PrivateRoute from "./Components/Contexts/AuthProvider/PrivateRoute/PrivateRoute";
-import { Toolbar } from "@mui/material";
+import { CssBaseline, Toolbar } from "@mui/material";
 import { Box } from "@mui/system";
 function App() {
   return (
